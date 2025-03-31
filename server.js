@@ -6,6 +6,8 @@ const MenuItem = require("./model/MenuItem")
 const dotenv = require("dotenv");
 personRoutes = require('./routes/personRoutes');
 menuItemRoutes = require("./routes/menuItemRoutes")
+const cors = require("cors")
+app.use(cors());
 
 require('dotenv').config()
 app.use(express.json());
