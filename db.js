@@ -3,7 +3,6 @@ const dotenv = require("dotenv");
 
 require('dotenv').config()
 
-// const MONGO_URL = process.env.MONGO_URL;
 // const mongoURL = process.env.MONGODB_URL_LOCAL
 const mongoURL = process.env.MONGO_URL
 // Set up MongoDB connection
@@ -18,7 +17,7 @@ db.on("connected", () => {
     console.log("Connected to MongoDB server");
 });
 
-db.on("error", (err) => {  
+db.on("error", (err) => {
     console.error("MongoDB connection error:", err);
 });
 

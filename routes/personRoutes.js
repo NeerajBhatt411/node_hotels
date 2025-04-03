@@ -1,15 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const Person = require("../model/person");
-
+const {jwtAuthMiddleware,genrateToken}= require("./../jwt");
+const { TokenExpiredError } = require('jsonwebtoken');
 // for adding person data 
-router.post("/", async (req, res) => {
+router.post("/signup", async (req, res) => {
   try {
     const data = req.body;
     const newPerson = Person(data);
     const response = await newPerson.save();
     console.log("data saved");
-    res.status(200).json(response);
+    const token = genrateToken(response.username);
+    console.log("token is ",token)
+    res.status(200).json({response:response,token:token});
 
 
   }
